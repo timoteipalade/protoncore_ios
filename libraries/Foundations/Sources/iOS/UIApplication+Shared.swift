@@ -32,10 +32,17 @@ public extension UIApplication {
     static func openURLIfPossible(_ url: URL) {
         // Can't use `#selector("openURL:")` here because this Swift error emerges:
         // Argument of '#selector' does not refer to an '@objc' method, property, or initializer
-        let selector = NSSelectorFromString("openURL:options:completionHandler:")
-        if UIApplication.getInstance()?.responds(to: selector) == true {
-            UIApplication.getInstance()?.perform(selector, with: url as NSURL)
-        }
+//        let selector = NSSelectorFromString("openURL:options:completionHandler:")
+//        let url = URL(string: "https://www.example.com")!
+//        let options: [UIApplication.OpenExternalURLOptionsKey: Any] = [:]
+//        let completionHandler: (Bool) -> Void = { success in
+//            print("URL Opened: \(success)")
+//        }
+//        if UIApplication.getInstance()?.responds(to: selector) == true {
+//            UIApplication.getInstance()?.perform(selector, with: url, with: options, with: completionHandler)
+//        }
+        
+        UIApplication.getInstance()?.open(url)
     }
 
     // Replacement for `UIAppplication.shared.keyWindow` because `UIApplication.shared.keyWindow` is deprecated.
