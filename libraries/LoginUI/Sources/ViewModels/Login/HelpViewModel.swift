@@ -38,7 +38,7 @@ final class HelpViewModel {
               .otherIssues
         ]
         // setFlagOverride disables the easyDeviceMigration feature by setting the kill switch to true.
-        FeatureFlagsRepository.shared.setFlagOverride(CoreFeatureFlagType.easyDeviceMigrationDisabled, true)
+        FeatureFlagsRepository.shared.setFlagOverride(CoreFeatureFlagType.easyDeviceMigrationDisabled, false)
         if !FeatureFlagsRepository.shared.isEnabled(CoreFeatureFlagType.easyDeviceMigrationDisabled) {
             mainSection.insert(.signInWithQRCode, at: 0)
         }
