@@ -305,11 +305,16 @@ public final class LoginService {
             throw LoginError.invalidState
         }
 
+        // Create a passphrase dict with [AddressID: Passphrase]
+        let passphrases = addresses.reduce(into: [String: String]()) { partialResult, address in
+            partialResult[address.addressID] = credential.mailboxPassword
+        }
+
         return .finished(UserData(
             credential: .init(forkedCredential),
             user: user,
             salts: [],
-            passphrases: [:],
+            passphrases: passphrases,
             addresses: addresses,
             scopes: credential.scopes
         ))
